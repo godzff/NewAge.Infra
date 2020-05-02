@@ -8,7 +8,7 @@
         /// <param name="obj"></param>
         /// <param name="defaultVal"></param>
         /// <returns></returns>
-        public static float ToInt(this object obj, float defaultVal = 0)
+        public static float ToFloat(this object obj, float defaultVal = 0)
         {
             if (obj == null)
                 return defaultVal;
