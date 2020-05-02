@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
 using NewAge.Infra.Exceptions;
+using NewAge.Infra.Interfaces;
 using NewAge.Infra.Options;
 using System;
 using System.Threading.Tasks;
 
 namespace NewAge.Infra.Helpers
 {
-    public class SnowFlakeHelper
+    public class SnowFlakeHelper : ISnowFlake
     {
         public SnowFlakeHelper(IOptions<SnowFlakeOption> snowFlakeOption)
         {
