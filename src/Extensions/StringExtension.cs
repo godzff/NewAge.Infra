@@ -32,7 +32,7 @@ namespace NewAge.Infra.Extensions
         /// </summary>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static string ToString(this object source) {
+        public static string ToStr(this object source) {
             return source?.ToString().Trim() ?? string.Empty;
         }
         /// <summary>
