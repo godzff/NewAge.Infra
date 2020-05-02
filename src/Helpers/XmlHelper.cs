@@ -3,6 +3,7 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace NewAge.Infra.Helpers
 {
@@ -40,6 +41,20 @@ namespace NewAge.Infra.Helpers
             string xmlDocStr = xmlDoc.InnerXml;
 
             return xmlDocStr;
+        }
+
+        /// <summary>
+        /// 将XML字符串反序列化为对象
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="xmlStr">XML字符串</param>
+        /// <returns></returns>
+        public static T XmlTo<T>(this string xml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            string jsonJsonStr = JsonConvert.SerializeXmlNode(doc);
+            return JsonConvert.DeserializeObject<T>(jsonJsonStr);
         }
     }
 }
