@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NewAge.Infra.Extensions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
@@ -24,10 +25,12 @@ namespace NewAge.Infra.Helpers
         /// <summary>
         /// 将对象转换为Json字符串
         /// </summary>
-        /// <param name="target">目标对象</param>
+        /// <param name="target">目标对象,若为string,则不做处理</param>
         /// <param name="isConvertToSingleQuotes">是否将双引号转成单引号</param>
         public static string ToJson(this object source, bool isConvertToSingleQuotes = false)
         {
+            if (source is string)
+                return source.ToStr();
             var timeFormat = new IsoDateTimeConverter
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss"
