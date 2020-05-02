@@ -55,32 +55,32 @@ namespace NewAge.Infra.Helpers
         /// <summary>
         /// 机器码字节数。4个字节用来保存机器码(定义为Long类型会出现，最大偏移64位，所以左移64位没有意义)
         /// </summary>
-        private static int workerIdBits = 10;
+        private static readonly int workerIdBits = 10;
 
         /// <summary>
         /// 最大机器ID所占的位数
         /// </summary>
-        private static long maxWorkerId = -1L ^ -1L << workerIdBits;
+        private static readonly long maxWorkerId = -1L ^ -1L << workerIdBits;
 
         /// <summary>
         /// 计数器字节数，10个字节用来保存计数码
         /// </summary>
-        private static int sequenceBits = 12;
+        private static readonly int sequenceBits = 12;
 
         /// <summary>
         /// 机器码数据左移位数，就是后面计数器占用的位数
         /// </summary>
-        private static int workerIdShift = sequenceBits;
+        private static readonly int workerIdShift = sequenceBits;
 
         /// <summary>
         /// 时间戳左移动位数就是机器码和计数器总字节数
         /// </summary>
-        private static int timestampLeftShift = sequenceBits + workerIdBits;
+        private static readonly int timestampLeftShift = sequenceBits + workerIdBits;
 
         /// <summary>
         /// 一微秒内可以产生计数，如果达到该值则等到下一微妙在进行生成
         /// </summary>
-        private static long sequenceMask = -1L ^ -1L << sequenceBits;
+        private static readonly long sequenceMask = -1L ^ -1L << sequenceBits;
 
         /// <summary>
         /// 最后一次的时间戳
@@ -90,7 +90,7 @@ namespace NewAge.Infra.Helpers
         /// <summary>
         /// 线程锁对象
         /// </summary>
-        private static object locker = new object();
+        private static readonly object locker = new object();
 
         /// <summary>
         /// 获取新的ID
