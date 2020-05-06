@@ -35,6 +35,10 @@ namespace NewAge.Infra.Extensions
         public static string ToStr(this object source) {
             return source?.ToString().Trim() ?? string.Empty;
         }
+        public static string ListToStr(this List<string> source,string separator = ",")
+        {
+            return string.Join(separator, source.ToArray());
+        }
         /// <summary>
         /// Base64加密
         /// </summary>
