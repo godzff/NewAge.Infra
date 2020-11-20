@@ -16,16 +16,16 @@ namespace NewAge.Infra.Helpers
                 throw new MyException("Workerid must be greater than 0 or less than " + maxWorkerId);
             _twepoch = TimeGen(2020, 1, 1, 0, 0, 0);
         }
-
-        public Task<long> NextIdAsync()
+        /// <summary>
+        /// 获取Id（异步）
+        /// </summary>
+        /// <returns></returns>
+        public async Task<long> NextIdAsync()
         {
-            return Task.Run(() =>
-            {
-                return NewId();
-            });
+            return await Task.FromResult(NewId());
         }
         /// <summary>
-        /// 
+        /// 获取Id（同步）
         /// </summary>
         /// <typeparam name="TResult"></typeparam>
         /// <returns></returns>

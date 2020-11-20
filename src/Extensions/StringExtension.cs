@@ -35,6 +35,12 @@ namespace NewAge.Infra.Extensions
         public static string ToStr(this object source) {
             return source?.ToString().Trim() ?? string.Empty;
         }
+        /// <summary>
+        /// 字符串拼接
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
         public static string ListToStr(this List<string> source,string separator = ",")
         {
             return string.Join(separator, source.ToArray());

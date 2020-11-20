@@ -1,4 +1,5 @@
 ﻿using NewAge.Infra.Enums;
+using NewAge.Infra.Extensions;
 
 namespace NewAge.Infra.Responses
 {
@@ -17,7 +18,7 @@ namespace NewAge.Infra.Responses
         public int Code { get; set; } = (int)EMyJson.Success;
         public MyJson(int code = (int)EMyJson.Success, string message = "")
         {
-            if (string.IsNullOrWhiteSpace(message) && code == (int)EMyJson.Success)
+            if (message.IsNullOrWhiteSpace() && code == (int)EMyJson.Success)
                 message = "请求成功";
             Code = code;
             Msg = message;
